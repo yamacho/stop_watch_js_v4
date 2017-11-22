@@ -14,6 +14,10 @@
     var s = Math.floor((elapsedTime % 60000) / 1000);
     var ms = elapsedTime % 1000;
 
+    m = ('0' + m).slice(-2);
+    s = ('0' + s).slice(-2);
+    ms = ('00' + ms).slice(-3);
+
     timer.textContent = m + ':' + s + '.' + ms;
   }
 
