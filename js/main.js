@@ -10,6 +10,7 @@
   var elapsedTime = 0;
   var timerId;
   var timeToAdd = 0;
+  var isRunning = false;
 
   function updateTimerText() {
     var m = Math.floor(elapsedTime / 60000);
@@ -32,16 +33,30 @@
   }
 
   start.addEventListener('click', function() {
+    if (isRunning === true) {
+      return;
+    }
+
+    isRunning = true;
     startTime = Date.now();
     countUp();
   });
 
   stop.addEventListener('click', function() {
+    if (isRunning === false) {
+      return;
+    }
+
+    isRunning = false;
     clearTimeout(timerId);
     timeToAdd += Date.now() - startTime;
   });
 
   reset.addEventListener('click', function() {
+    if (isRunning === true) {
+      return;
+    }
+
     elapsedTime = 0;
     timeToAdd = 0;
     updateTimerText();
