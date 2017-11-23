@@ -9,6 +9,7 @@
   var startTime;
   var elapsedTime = 0;
   var timerId;
+  var timeToAdd = 0;
 
   function updateTimerText() {
     var m = Math.floor(elapsedTime / 60000);
@@ -24,7 +25,7 @@
 
   function countUp() {
     timerId = setTimeout(function() {
-      elapsedTime = Date.now() - startTime;
+      elapsedTime = Date.now() - startTime + timeToAdd;
       updateTimerText();
       countUp();
     }, 10);
@@ -37,10 +38,12 @@
 
   stop.addEventListener('click', function() {
     clearTimeout(timerId);
+    timeToAdd += Date.now() - startTime;
   });
 
   reset.addEventListener('click', function() {
     elapsedTime = 0;
+    timeToAdd = 0;
     updateTimerText();
   });
 })();
