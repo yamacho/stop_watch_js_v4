@@ -40,3 +40,7 @@ body {
 .controls {
   overflow: hidden;
 }
+
+.inactive {
+  opacity: 0.6;
+}

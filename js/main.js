@@ -32,6 +32,10 @@
     }, 10);
   }
 
+  start.className = 'btn';
+  stop.className = 'btn inactive';
+  reset.className = 'btn inactive';
+
   start.addEventListener('click', function() {
     if (isRunning === true) {
       return;
